@@ -1,0 +1,2 @@
+class TttController < ApplicationController
+end
