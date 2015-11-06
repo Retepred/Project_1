@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
- root to: 'ttt#tictactoe'
+ resources :games
+ resources :ttts
+ root to: 'home#welcome'
 end
