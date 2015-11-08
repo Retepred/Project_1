@@ -1,3 +1,3 @@
 class Game < ActiveRecord::Base
-  has_many :tictactoes
+  has_many :ttt_mains
 end

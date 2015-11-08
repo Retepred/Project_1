@@ -1,3 +1,0 @@
-class CellController < ApplicationController
-  
-end

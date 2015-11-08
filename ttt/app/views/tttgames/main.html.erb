@@ -1,0 +1,43 @@
+<% require 'pry-byebug'
+require_relative 'game'
+require_relative 'move'
+
+
+def print_board(game)
+  puts(game.board_symbols.each_slice(3).map do |row|
+    row.map { |e| e || ' ' }.join(' | ')
+  end.join("\n---------\n"))
+end
+
+
+puts `clear`
+
+puts "time to play!"
+
+g = Game.new
+
+puts "player 1? "
+g.player1 = gets.chomp
+
+puts "player 2? "
+g.player2 = gets.chomp
+
+
+until g.finished?
+  puts `clear`
+  puts print_board(g)
+
+  puts "#{g.whose_turn}'s move? "
+
+  g.make_move g.whose_turn, gets.to_i
+end
+
+puts `clear`
+puts print_board(g)
+
+puts g.result
+
+
+binding.pry;'' %>
+
+

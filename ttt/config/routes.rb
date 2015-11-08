@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
+  
  resources :games
- resources :ttts
+ resources :tttgames
+ resources :move
  root to: 'home#welcome'
+
 end
