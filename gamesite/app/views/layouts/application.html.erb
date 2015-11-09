@@ -12,12 +12,14 @@
 
 <body>
 
-<nav>
-  <ul>
-    <li> <%= link_to('Home', root_path) %> </li>
-    <li> <%= link_to('Games', games_path) %> </li>
-  </ul>
-</nav>
+  <nav>
+    <div>
+      <ul>
+        <li> <%= link_to('Home', root_path) %> </li>
+        <li> <%= link_to('Games', games_path) %> </li>
+      </ul>
+    </div>
+  </nav>
 
 <%= yield %>
 
