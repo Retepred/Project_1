@@ -5,21 +5,33 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
 </head>
+
+<div class='login'>
+  <% if user_signed_in? %>
+    <%= current_user.email %>
+    <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+  <% else %>
+    <%= link_to "Sign In", new_user_session_path %>
+    <%= link_to "Register", new_user_registration_path %>
+  <% end %>
+</div>
+
 
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 
-<body>
-
+<div class="main_menu">
   <nav>
-    <div>
       <ul>
         <li> <%= link_to('Home', root_path) %> </li>
         <li> <%= link_to('Games', games_path) %> </li>
       </ul>
-    </div>
   </nav>
+</div>
+
+<body>
 
 <%= yield %>
 

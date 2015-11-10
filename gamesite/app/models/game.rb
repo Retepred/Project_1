@@ -6,15 +6,14 @@ class Game < ActiveRecord::Base
     def board
       empty_board.tap do |board|
         moves.each do |move|
-          board[move.square] = move if move
+          board[move.square] = move.symbol
         end
       end
     end
 
-    def board_symbols
-      board.map { |move| move && move.symbol }
+    def board_squared
+      board.each_slice(3).to_a
     end
-
 
     def make_move(player, square)
       Move.new(square: square, symbol: symbol_for_player(player), player: player, game: self)
@@ -79,11 +78,11 @@ class Game < ActiveRecord::Base
     end
 
 
-  def print_board
-    puts(board_symbols.each_slice(3).map do |row|
-      row.map { |e| e || ' ' }.join(' | ')
-    end.join("\n---------\n"))
-  end
+  # def print_board
+  #   puts(board_symbols.each_slice(3).map do |row|
+  #     row.map { |e| e || ' ' }.join(' | ')
+  #   end.join("\n---------\n"))
+  # end
 
 
 

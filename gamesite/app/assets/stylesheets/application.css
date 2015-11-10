@@ -13,3 +13,41 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  background-image: url("/main.jpg"), url("/xo.jpg");
+  background-position: center, right bottom;
+/*  background-size: 100%;*/
+}
+.main_menu{
+  position: fixed;
+  left: 45%;
+  top: 1%;
+  text-decoration: none;
+}
+ul{
+  list-style-type: none;
+}
+table {
+  border: 1px solid blue;
+}
+td {
+  border: 1px solid black;
+  height: 18px;
+  width: 10px;
+  text-decoration: none;
+  color: black;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+.game_list {
+  width: 50%;
+  height: 100%;
+  padding-left: 550px;
+}
+.game_names {
+  border: 1px dotted black;
+  width: 80px;
+}

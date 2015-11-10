@@ -9,3 +9,5 @@
 
 User.delete_all
 User.create!(email: 'bitemeagain@hotmail.co.uk', password: 'tabula3847', role: :admin)
+
+Game.delete_all

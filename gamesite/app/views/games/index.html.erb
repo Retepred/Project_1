@@ -1,0 +1,16 @@
+<br>
+<center><h1>TicTacToe</h1></center>
+<center><h2>List of Current Games</h2></center>
+
+<div class="game_list">
+<tbody>
+    <% @games.each do |game| %>
+      <tr>
+      <div class="game_names">
+        <td><%= link_to game.game_name, game %></td>
+      </div>
+      </tr>
+    <% end %>
+    <p><%= link_to 'New Game', new_game_path(@game) %></p>
+  </tbody>
+  </div>

@@ -1,0 +1,12 @@
+<h3>Game</strong></h3>
+
+  <p>Game number: <%= @game.id %></p>
+  <p><strong><%= @game.game_name %></strong></p>
+
+  <table><tbody><% a = @game.board_squared %>
+      <% a.each do |row| %>
+      <tr>
+        <% row.each do |column| %>
+        <td> <%= column %></td>
+        <% end %></tr>
+      <% end %></tbody></table>
