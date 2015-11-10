@@ -14,22 +14,50 @@
  *= require_self
  */
 
+ @font-face {
+     font-family: font;
+     src: url(/font.ttf);
+ }
+
 body {
-  background-image: url("/main.jpg"), url("/xo.jpg");
-  background-position: center, right bottom;
-/*  background-size: 100%;*/
+  background-image: url("/main.jpg");
+  background-size: 100%;
+  font-family: 'font';
+  font-size: 200%;
+}
+.xo1{
+  top: 50%;
+  left: 20%;
+  position: fixed;
+  background-image: url("/main.jpg");
+  -webkit-transform: rotate(10deg);
+  -moz-transform: rotate(10deg);
+  -o-transform: rotate(10deg);
+  -ms-transform: rotate(10deg);
+  transform: rotate(10deg);
+}
+.xo2{
+  top: 70%;
+  left: 14%;
+  position: fixed;
+  background-image: url("/main.jpg");
+  -webkit-transform: rotate(30deg);
+  -moz-transform: rotate(30deg);
+  -o-transform: rotate(30deg);
+  -ms-transform: rotate(30deg);
+  transform: rotate(30deg);
 }
 .main_menu{
   position: fixed;
   left: 45%;
   top: 1%;
-  text-decoration: none;
 }
 ul{
   list-style-type: none;
+  display: inline-block;
 }
 table {
-  border: 1px solid blue;
+  border: 3px solid black;
 }
 td {
   border: 1px solid black;
@@ -37,6 +65,7 @@ td {
   width: 10px;
   text-decoration: none;
   color: black;
+  font-size: 20px;
 }
 a {
   text-decoration: none;
@@ -48,6 +77,16 @@ a {
   padding-left: 550px;
 }
 .game_names {
-  border: 1px dotted black;
+/*  border: 1px dotted black;*/
   width: 80px;
+}
+.show{
+  position: fixed;
+  top: 30%;
+  left: 35%;
+}
+.new{
+  position: fixed;
+  top: 35%;
+  left: 45%;
 }

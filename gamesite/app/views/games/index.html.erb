@@ -2,12 +2,15 @@
 <center><h1>TicTacToe</h1></center>
 <center><h2>List of Current Games</h2></center>
 
+<img src="xo.jpg" height="200" width="160" class='xo1'>
+<img src="xo.jpg" height="210" width="165" class='xo2'>
+
 <div class="game_list">
 <tbody>
     <% @games.each do |game| %>
       <tr>
       <div class="game_names">
-        <td><%= link_to game.game_name, game %></td>
+        <td>-<%= link_to game.game_name, game %></td>
       </div>
       </tr>
     <% end %>

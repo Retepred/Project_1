@@ -16,7 +16,8 @@ class Game < ActiveRecord::Base
     end
 
     def make_move(player, square)
-      Move.new(square: square, symbol: symbol_for_player(player), player: player, game: self)
+      Move.create(square: square, symbol: symbol_for_player(player), player: player, game: self)
+      save!
     end
 
 

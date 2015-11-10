@@ -1,12 +1,28 @@
+<div class="show">
 <h3>Game</strong></h3>
 
   <p>Game number: <%= @game.id %></p>
   <p><strong><%= @game.game_name %></strong></p>
 
-  <table><tbody><% a = @game.board_squared %>
-      <% a.each do |row| %>
-      <tr>
-        <% row.each do |column| %>
-        <td> <%= column %></td>
-        <% end %></tr>
-      <% end %></tbody></table>
+<table>
+  <tbody>
+    <% a = @game.board_squared %>
+    <% a.each do |row| %>
+    <tr>
+      <% row.each do |column| %>
+      <td> <%= column %></td>
+      <% end %></tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<p><%= button_to '', {action: :update, params: {square: 0}}, method: :patch, class: "TTTButton" %></p>
+<p><%= button_to '', {action: :update, params: {square: 1}}, method: :patch, class: "TTTButton" %></p>
+<p><%= button_to '', {action: :update, params: {square: 2}}, method: :patch, class: "TTTButton" %></p>
+<p><%= button_to '', {action: :update, params: {square: 3}}, method: :patch, class: "TTTButton" %></p>
+<p><%= button_to '', {action: :update, params: {square: 4}}, method: :patch, class: "TTTButton" %></p>
+<p><%= button_to '', {action: :update, params: {square: 5}}, method: :patch, class: "TTTButton" %></p>
+<p><%= button_to '', {action: :update, params: {square: 6}}, method: :patch, class: "TTTButton" %></p>
+<p><%= button_to '', {action: :update, params: {square: 7}}, method: :patch, class: "TTTButton" %></p>
+<p><%= button_to '', {action: :update, params: {square: 8}}, method: :patch, class: "TTTButton" %></p>

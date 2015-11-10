@@ -5,6 +5,11 @@ class GamesController < ApplicationController
   def index
   end
 
+  def update
+    @game.make_move(current_user, params[:square])
+    redirect_to(game_path(@game))
+  end
+
   def show
   end
 
