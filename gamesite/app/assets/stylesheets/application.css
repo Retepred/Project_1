@@ -55,6 +55,7 @@ body {
 ul{
   list-style-type: none;
   display: inline-block;
+  font-size: 40px;
 }
 table {
   border: 3px solid black;

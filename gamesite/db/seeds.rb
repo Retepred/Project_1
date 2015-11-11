@@ -8,6 +8,7 @@
 
 
 User.delete_all
-User.create!(email: 'bitemeagain@hotmail.co.uk', password: 'tabula3847', role: :admin)
+User.create!(email: 'bitemeagain@hotmail.co.uk', password: 'password1', role: :admin)
+User.create!(email: 'fakeperson@hotmail.co.uk', password: 'password2', role: :admin)
 
 Game.delete_all

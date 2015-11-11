@@ -6,8 +6,8 @@
 
 <table>
   <tbody>
-    <% a = @game.board_squared %>
-    <% a.each do |row| %>
+    <% game_board_squared = @game.board_squared %>
+    <% game_board_squared.each do |row| %>
     <tr>
       <% row.each do |column| %>
       <td> <%= column %></td>
@@ -17,12 +17,56 @@
 </table>
 </div>
 
-<p><%= button_to '', {action: :update, params: {square: 0}}, method: :patch, class: "TTTButton" %></p>
-<p><%= button_to '', {action: :update, params: {square: 1}}, method: :patch, class: "TTTButton" %></p>
-<p><%= button_to '', {action: :update, params: {square: 2}}, method: :patch, class: "TTTButton" %></p>
-<p><%= button_to '', {action: :update, params: {square: 3}}, method: :patch, class: "TTTButton" %></p>
-<p><%= button_to '', {action: :update, params: {square: 4}}, method: :patch, class: "TTTButton" %></p>
-<p><%= button_to '', {action: :update, params: {square: 5}}, method: :patch, class: "TTTButton" %></p>
-<p><%= button_to '', {action: :update, params: {square: 6}}, method: :patch, class: "TTTButton" %></p>
-<p><%= button_to '', {action: :update, params: {square: 7}}, method: :patch, class: "TTTButton" %></p>
-<p><%= button_to '', {action: :update, params: {square: 8}}, method: :patch, class: "TTTButton" %></p>
+<p>
+  <%if @game.board_squared[0][0] == nil%> 
+    <%= button_to '', {action: :update, params: {square: 0}}, method: :patch, class: "TTTButton" %>
+  <%end%>
+</p>
+
+<p>
+  <%if @game.board_squared[0][1] == nil%>
+    <%= button_to '', {action: :update, params: {square: 1}}, method: :patch, class: "TTTButton" %>
+  <%end%>
+</p>
+
+<p>
+  <%if @game.board_squared[0][2] == nil%>
+    <%= button_to '', {action: :update, params: {square: 2}}, method: :patch, class: "TTTButton" %>
+  <%end%>
+</p>
+
+<p>
+  <%if @game.board_squared[1][0] == nil%>
+    <%= button_to '', {action: :update, params: {square: 3}}, method: :patch, class: "TTTButton" %>
+  <% end %>
+</p>
+
+<p>
+<%if @game.board_squared[1][1] == nil%>
+<%= button_to '', {action: :update, params: {square: 4}}, method: :patch, class: "TTTButton" %>
+<% end %>
+</p>
+
+<p>
+<%if @game.board_squared[1][2] == nil%>
+<%= button_to '', {action: :update, params: {square: 5}}, method: :patch, class: "TTTButton" %>
+<% end %>
+</p>
+
+<p>
+<%if @game.board_squared[2][0] == nil%>
+<%= button_to '', {action: :update, params: {square: 6}}, method: :patch, class: "TTTButton" %>
+<% end %>
+</p>
+
+<p>
+<%if @game.board_squared[2][1] == nil%>
+<%= button_to '', {action: :update, params: {square: 7}}, method: :patch, class: "TTTButton" %>
+<% end %>
+</p>
+
+<p>
+<%if @game.board_squared[2][2] == nil%>
+<%= button_to '', {action: :update, params: {square: 8}}, method: :patch, class: "TTTButton" %>
+<% end %>
+</p>
