@@ -15,16 +15,26 @@ class Game < ActiveRecord::Base
       board.each_slice(3).to_a
     end
 
-    def make_move(player, square)
-      Move.create(square: square, symbol: symbol_for_player(player), player: player, game: self)
-      save!
-    end
-
-
     def whose_turn
       return player1 if moves.empty?
       moves.last.player == player1 ? player2 : player1
     end
+
+    def move_check?(player)
+      player == self.whose_turn
+    end
+
+    def make_move(player, square)
+      if move_check?(player) == true
+        Move.create(square: square, symbol: symbol_for_player(player), player: player, game: self)
+      else
+        puts "Not your turn!"
+      end
+    end
+
+    
+
+
 
 
     def finished?

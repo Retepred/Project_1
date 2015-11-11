@@ -18,7 +18,7 @@ class GamesController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:user])
+    @game.player1 = current_user
 
     respond_to do |format|
       if @game.save
