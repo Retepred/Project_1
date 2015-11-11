@@ -1,5 +1,5 @@
 <center><h2>TicTacToe</h2></center>
-<center><h3>List of Current Games</h3></center>
+<center><h3>List of Current Players</h3></center>
 
 <img src="xo.png" height="100" width="90" class='xo1'>
 <img src="xo.png" height="120" width="95" class='xo2'>
@@ -7,13 +7,12 @@
 
 <div class="game_list">
 <tbody>
-    <% @games.each do |game| %>
+    <% @users.each do |user| %>
       <tr>
       <div class="game_names">
-        <td>-<%= link_to game.game_name, game %></td>
+        <td>-<%= user.username %></td>
       </div>
       </tr>
     <% end %>
-    <p><%= link_to 'New Game', new_game_path(@game) %></p>
   </tbody>
   </div>

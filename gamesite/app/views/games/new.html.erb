@@ -16,6 +16,11 @@
     <%= f.label :game_name %>
     <%= f.text_field :game_name, :maxlength => 10 %>
   </div>
+ <div class="field">
+   <%= f.label :player2_id %>
+   <%= f.collection_select :player2_id, User.all.reject {|user| user == current_user}, :id, :username %>
+ </div> 
+
   <div class="actions">
     <%= f.button %>
   </div>

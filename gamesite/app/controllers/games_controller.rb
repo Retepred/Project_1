@@ -2,11 +2,19 @@ class GamesController < ApplicationController
 
   load_and_authorize_resource
 
+
   def index
   end
 
   def update
-    @game.make_move(current_user, params[:square])
+    if @game.make_move(current_user, params[:square]).persisted?
+      #do some stuff if it's a game against the computer
+    # if @game.player_ai? 
+     
+    end
+
+    
+    flash[:alert] = @game.errors.messages[:player].first if @game.errors.messages[:player]
     redirect_to(game_path(@game))
   end
 
@@ -37,7 +45,7 @@ class GamesController < ApplicationController
   # end
 
   def game_params
-    params.require(:game).permit(:game_name)
+    params.require(:game).permit(:game_name, :player1_id, :player2_id, :username)
   end
 
 end

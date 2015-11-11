@@ -18,18 +18,19 @@
   <% end %>
 </div>
 
+<audio controls>
+  <source src="tictactoe.mp3" type="audio/mpeg">
+</audio>
 
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 
-<!-- <img src="xo.jpg" height="200" width="160" class='xo1'>
-<img src="xo.jpg" height="210" width="165" class='xo2'> -->
-
 <div class="main_menu">
   <nav>
       <ul>
-        <li> <%= link_to('Home', root_path) %> </li>
-        <li> <%= link_to('Games', games_path) %> </li>
+        <li> <%= link_to('Home-', root_path) %> </li>
+        <li> <%= link_to('Games-', games_path) %> </li>
+        <li> <%= link_to('Players', users_path) %></li>
       </ul>
   </nav>
 </div>

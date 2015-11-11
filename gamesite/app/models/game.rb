@@ -11,6 +11,14 @@ class Game < ActiveRecord::Base
       end
     end
 
+    def ai_playing?
+      player2.try(:username) == "AI-Random"
+    end
+
+    def ai
+
+    end
+
     def board_squared
       board.each_slice(3).to_a
     end
@@ -28,53 +36,48 @@ class Game < ActiveRecord::Base
       if move_check?(player) == true
         Move.create(square: square, symbol: symbol_for_player(player), player: player, game: self)
       else
-        puts "Not your turn!"
+        errors.add(:player, "It isn't your turn Mr Greedy!")
+        Move.new
       end
     end
 
-    
-
-
-
+    def square_is_empty?(square)
+        !board[square]
+    end
 
     def finished?
       winning_game? || drawn_game?
     end
-
 
     def result
       case
       when drawn_game?
         "It is a draw!"
       when winning_game?
-        "#{moves.last.player} won!"
+        "#{moves.last.player.username} won!"
       else
         "It's still in progress"
       end
     end
-
 
     WINNING_LINES = [ [0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6] ]
 
     private
     def winning_game?
       !!WINNING_LINES.detect do |winning_line|
-        %w(XXX OOO).include?(winning_line.map { |e| board_symbols[e] }.join)
+        %w(XXX OOO).include?(winning_line.map { |e| board[e] }.join)
       end
     end
 
-
     private
     def drawn_game?
-      board.all?
+      moves.size == 9
     end
-
 
     private
     def empty_board
       [nil,nil,nil,nil,nil,nil,nil,nil,nil]
     end
-
 
     private
     def symbol_for_player(player)
@@ -87,18 +90,4 @@ class Game < ActiveRecord::Base
         raise "who?! that's not one of my players!"
       end
     end
-
-
-  # def print_board
-  #   puts(board_symbols.each_slice(3).map do |row|
-  #     row.map { |e| e || ' ' }.join(' | ')
-  #   end.join("\n---------\n"))
-  # end
-
-
-
-
-
-
-
 end

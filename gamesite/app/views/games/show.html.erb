@@ -1,72 +1,43 @@
 <div class="show">
-<h3>Game</strong></h3>
+  </br>
 
-  <p>Game number: <%= @game.id %></p>
-  <p><strong><%= @game.game_name %></strong></p>
+  <strong><p><%= @game.game_name %></p></strong>
+  <p><%= @game.player1.username %> <br>
+  <%= @game.player2.username %></p>
 
+<p><%= @game.result %></p>
 <table>
   <tbody>
     <% game_board_squared = @game.board_squared %>
-    <% game_board_squared.each do |row| %>
+    <% game_board_squared.each_with_index do |row, row_index| %>
     <tr>
-      <% row.each do |column| %>
-      <td> <%= column %></td>
+      <% row.each_with_index do |column, column_index| %>
+      <td>
+        <% cell_number = (row_index * 3) + column_index %>
+        <%= column if column %>
+        <div class="button<%=cell_number%>"
+        <p>
+          <%if @game.board_squared[row_index][column_index] == nil%> 
+            <%= button_to 'Click me!', {action: :update, params: {square: cell_number}}, method: :patch, class: "TTTButton" %>
+          <%end%>
+        </p>
+        </div>
+      </td>
       <% end %></tr>
     <% end %>
   </tbody>
 </table>
 </div>
 
-<p>
-  <%if @game.board_squared[0][0] == nil%> 
-    <%= button_to '', {action: :update, params: {square: 0}}, method: :patch, class: "TTTButton" %>
-  <%end%>
-</p>
 
-<p>
-  <%if @game.board_squared[0][1] == nil%>
-    <%= button_to '', {action: :update, params: {square: 1}}, method: :patch, class: "TTTButton" %>
-  <%end%>
-</p>
+<% if @move && @move.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@move.errors.count, "error") %> prohibited this move from being saved:</h2>
 
-<p>
-  <%if @game.board_squared[0][2] == nil%>
-    <%= button_to '', {action: :update, params: {square: 2}}, method: :patch, class: "TTTButton" %>
-  <%end%>
-</p>
-
-<p>
-  <%if @game.board_squared[1][0] == nil%>
-    <%= button_to '', {action: :update, params: {square: 3}}, method: :patch, class: "TTTButton" %>
-  <% end %>
-</p>
-
-<p>
-<%if @game.board_squared[1][1] == nil%>
-<%= button_to '', {action: :update, params: {square: 4}}, method: :patch, class: "TTTButton" %>
+    <ul>
+    <% @move.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
 <% end %>
-</p>
-
-<p>
-<%if @game.board_squared[1][2] == nil%>
-<%= button_to '', {action: :update, params: {square: 5}}, method: :patch, class: "TTTButton" %>
-<% end %>
-</p>
-
-<p>
-<%if @game.board_squared[2][0] == nil%>
-<%= button_to '', {action: :update, params: {square: 6}}, method: :patch, class: "TTTButton" %>
-<% end %>
-</p>
-
-<p>
-<%if @game.board_squared[2][1] == nil%>
-<%= button_to '', {action: :update, params: {square: 7}}, method: :patch, class: "TTTButton" %>
-<% end %>
-</p>
-
-<p>
-<%if @game.board_squared[2][2] == nil%>
-<%= button_to '', {action: :update, params: {square: 8}}, method: :patch, class: "TTTButton" %>
-<% end %>
-</p>

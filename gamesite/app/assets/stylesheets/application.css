@@ -20,53 +20,75 @@
  }
 
 body {
-  background-image: url("/main.jpg");
-  background-size: 100%;
+  background-image: url("/dice.jpg");
+  background-size: 10%;
+  background-repeat: no-repeat;
+  background-position: static;
+  background-size: cover;
   font-family: 'font';
   font-size: 200%;
 }
 .xo1{
-  top: 50%;
-  left: 20%;
+  size: 75%;
+  top: 20%;
+  left: 70%;
   position: fixed;
-  background-image: url("/main.jpg");
-  -webkit-transform: rotate(10deg);
-  -moz-transform: rotate(10deg);
-  -o-transform: rotate(10deg);
-  -ms-transform: rotate(10deg);
-  transform: rotate(10deg);
+  -webkit-transform: rotate(-10deg);
+  -moz-transform: rotate(-10deg);
+  -o-transform: rotate(-10deg);
+  -ms-transform: rotate(-10deg);
+  transform: rotate(-10deg);
 }
 .xo2{
   top: 70%;
   left: 14%;
   position: fixed;
-  background-image: url("/main.jpg");
   -webkit-transform: rotate(30deg);
   -moz-transform: rotate(30deg);
   -o-transform: rotate(30deg);
   -ms-transform: rotate(30deg);
   transform: rotate(30deg);
 }
+.xo3{
+  top: 40%;
+  left: 80%;
+  position: fixed;
+  -webkit-transform: rotate(-60deg);
+  -moz-transform: rotate(-60deg);
+  -o-transform: rotate(-60deg);
+  -ms-transform: rotate(-60deg);
+  transform: rotate(-60deg);
+}
 .main_menu{
   position: fixed;
-  left: 45%;
+  left: 40%;
   top: 1%;
+  display: inline;
 }
 ul{
   list-style-type: none;
-  display: inline-block;
+  display: inline;
   font-size: 40px;
+}
+li{
+  display: inline;
+  text-decoration: none;
+  font-weight: bold;
 }
 table {
   border: 3px solid black;
+  position: fixed;
+  top: 30%;
+  left:30%;
 }
 td {
   border: 1px solid black;
-  height: 18px;
-  width: 10px;
+  height: 60px;
+  width: 60px;
   text-decoration: none;
   color: black;
-  font-size: 20px;
+  font-size: 40px;
+  text-align: center;
 }
 a {
   text-decoration: none;
@@ -83,8 +105,9 @@ a {
 }
 .show{
   position: fixed;
-  top: 30%;
-  left: 35%;
+  top: 10%;
+  left: 15%;
+  font-size: 40px;
 }
 .new{
   position: fixed;
