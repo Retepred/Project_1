@@ -6,7 +6,7 @@
 <img src="xo.png" height="125" width="97" class='xo3'>
 
 <div class="game_list">
-<tbody>
+  <tbody>
     <% @games.each do |game| %>
       <tr>
       <div class="game_names">
@@ -16,4 +16,4 @@
     <% end %>
     <p><%= link_to 'New Game', new_game_path(@game) %></p>
   </tbody>
-  </div>
+</div>
