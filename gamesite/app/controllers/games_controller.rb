@@ -9,36 +9,38 @@ class GamesController < ApplicationController
   def update
     if @game.make_move(current_user, params[:square]).persisted?
       #do some stuff if it's a game against the computer
-    # if @game.player_ai? 
-     
+      @game.reload
+      if @game.ai_playing? && !@game.finished?
+        @game.make_move( @game.player2, @game.free_squares.sample )
+      end
+
+      flash[:alert] = @game.errors.messages[:player].first if @game.errors.messages[:player]
+      redirect_to(game_path(@game))
+    end
+    render :show
+  end
+
+    def show
     end
 
-    
-    flash[:alert] = @game.errors.messages[:player].first if @game.errors.messages[:player]
-    redirect_to(game_path(@game))
-  end
+    def new
+      @game = Game.new
+    end
 
-  def show
-  end
+    def create
+      @game.player1 = current_user
 
-  def new
-    @game = Game.new
-  end
-
-  def create
-    @game.player1 = current_user
-
-    respond_to do |format|
-      if @game.save
-        flash[:notice] = "Game #{@game.game_name} was successfully created."
-        format.html { redirect_to(:action=>:index) }
-        format.xml  { render :xml => @game, :status => :created, :location => @game }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @game.errors, :status => :unprocessable_entity }
+      respond_to do |format|
+        if @game.save
+          flash[:notice] = "Game #{@game.game_name} was successfully created."
+          format.html { redirect_to(:action=>:index) }
+          format.xml  { render :xml => @game, :status => :created, :location => @game }
+        else
+          format.html { render :action => "new" }
+          format.xml  { render :xml => @game.errors, :status => :unprocessable_entity }
+        end
       end
     end
-  end
 
   # def user_params
   #   params.require(:user).permit(:game_name)

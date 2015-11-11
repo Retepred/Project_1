@@ -15,9 +15,9 @@ class Game < ActiveRecord::Base
       player2.try(:username) == "AI-Random"
     end
 
-    def ai
-
-    end
+    # def games
+    #   games.player1 + games.player2
+    # end
 
     def board_squared
       board.each_slice(3).to_a
@@ -34,11 +34,15 @@ class Game < ActiveRecord::Base
 
     def make_move(player, square)
       if move_check?(player) == true
-        Move.create(square: square, symbol: symbol_for_player(player), player: player, game: self)
+        Move.create!(square: square, symbol: symbol_for_player(player), player: player, game: self)
       else
         errors.add(:player, "It isn't your turn Mr Greedy!")
         Move.new
       end
+    end
+
+    def free_squares
+      board.each_with_index.map {|square, index| index unless square}.compact
     end
 
     def square_is_empty?(square)
@@ -71,7 +75,8 @@ class Game < ActiveRecord::Base
 
     private
     def drawn_game?
-      moves.size == 9
+      # moves.size == 9
+      !free_squares
     end
 
     private
