@@ -41,6 +41,10 @@ class Game < ActiveRecord::Base
       end
     end
 
+    # def win_increase
+    #   moves.last.player.wins + 1
+    # end
+
     def free_squares
       board.each_with_index.map {|square, index| index unless square}.compact
     end
@@ -59,6 +63,7 @@ class Game < ActiveRecord::Base
         "It is a draw!"
       when winning_game?
         "#{moves.last.player.username} won!"
+          # win_increase
       else
         "It's still in progress"
       end

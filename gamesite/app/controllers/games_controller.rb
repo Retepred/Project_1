@@ -2,13 +2,11 @@ class GamesController < ApplicationController
 
   load_and_authorize_resource
 
-
   def index
   end
 
   def update
     if @game.make_move(current_user, params[:square]).persisted?
-      #do some stuff if it's a game against the computer
       @game.reload
       if @game.ai_playing? && !@game.finished?
         @game.make_move( @game.player2, @game.free_squares.sample )
@@ -17,7 +15,7 @@ class GamesController < ApplicationController
       flash[:alert] = @game.errors.messages[:player].first if @game.errors.messages[:player]
       redirect_to(game_path(@game))
     end
-    # render :show
+    return (game_path)
   end
 
     def show

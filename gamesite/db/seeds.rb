@@ -8,11 +8,11 @@
 
 
 User.delete_all
-User.create!(email: 'angry@arghblargh.co.uk', password: 'password1', role: :admin, username: 'Max')
-User.create!(email: 'fakeperson@bumblebee.co.uk', password: 'password2', role: :admin, username: 'Humphrey')
-User.create!(email: 'fakepeople@bumblebee.co.uk', password: 'password3', role: :admin, username: 'JenniferL')
+User.create!(email: 'angry@arghblargh.co.uk', password: 'password1', role: :admin, username: 'Max', wins: 3)
+User.create!(email: 'fakeperson@bumblebee.co.uk', password: 'password2', role: :admin, username: 'Humphrey', wins: 5)
+User.create!(email: 'fakepeople@bumblebee.co.uk', password: 'password3', role: :admin, username: 'JenniferL', wins: 99)
 
 # Computer players Don't touch!
-User.create!(email: 'randy@randolph.co.uk', password: 'password4', role: :admin, username: 'AI-Random')
+User.create!(email: 'randy@randolph.co.uk', password: 'password4', role: :admin, username: 'AI-Random', wins: 3000)
 
 Game.delete_all

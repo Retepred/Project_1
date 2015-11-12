@@ -6,13 +6,14 @@
 <img src="xo.png" height="125" width="97" class='xo3'>
 
 <div class="game_list">
-<tbody>
+  <tbody>
     <% @users.each do |user| %>
       <tr>
-      <div class="game_names">
-        <td>-<%= user.username %></td>
-      </div>
+        <div class="game_names">
+         <td>-<%= user.username %></td>
+         <td>wins:<%= user.wins %></td>
+        </div>
       </tr>
     <% end %>
   </tbody>
-  </div>
+</div>
