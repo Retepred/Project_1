@@ -13,9 +13,9 @@ class GamesController < ApplicationController
       end
 
       flash[:alert] = @game.errors.messages[:player].first if @game.errors.messages[:player]
-      redirect_to(game_path(@game))
+      redirect_to(game_path(@game)) and return
     end
-    return (game_path)
+    redirect_to (game_path)
   end
 
     def show
