@@ -1,10 +1,5 @@
 <center><h2>TicTacToe</h2></center>
 <center><h3>List of Current Games</h3></center>
-
-<img src="xo.png" height="100" width="90" class='xo1'>
-<img src="xo.png" height="120" width="95" class='xo2'>
-<img src="xo.png" height="125" width="97" class='xo3'>
-
 <div class="game_list">
   <tbody>
     <% @games.each do |game| %>
@@ -14,6 +9,12 @@
       </div>
       </tr>
     <% end %>
-    <p><%= link_to 'New Game', new_game_path(@game) %></p>
   </tbody>
 </div>
+<center><p><%= link_to 'New Game', new_game_path(@game) %></p></center>
+
+<img src="xo.png" height="100" width="90" class='xo1'>
+<img src="xo.png" height="120" width="95" class='xo2'>
+<img src="xo.png" height="125" width="97" class='xo3'>
+<img src="bug.gif" height="105" width="67">
+<img src="bug.gif" height="125" width="97" class='xo3'>

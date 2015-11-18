@@ -6,6 +6,7 @@ class GamesController < ApplicationController
   end
 
   def update
+    flash[:alert] = @game.errors.messages[:player].first if @game.errors.messages[:player]
     if @game.make_move(current_user, params[:square]).persisted?
       @game.reload
       if @game.ai_playing? && !@game.finished?
@@ -15,7 +16,7 @@ class GamesController < ApplicationController
       flash[:alert] = @game.errors.messages[:player].first if @game.errors.messages[:player]
       redirect_to(game_path(@game)) and return
     end
-    redirect_to (game_path)
+     redirect_to (game_path)
   end
 
     def show

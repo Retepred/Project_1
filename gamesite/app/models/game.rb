@@ -34,7 +34,12 @@ class Game < ActiveRecord::Base
 
     def make_move(player, square)
       if move_check?(player) == true
-        Move.create!(square: square, symbol: symbol_for_player(player), player: player, game: self)
+        if square_is_empty?(square.to_i)
+          Move.create!(square: square, symbol: symbol_for_player(player), player: player, game: self)
+        else
+          errors.add(:player, "That square has been taken!")
+          Move.new
+        end
       else
         errors.add(:player, "It isn't your turn Mr Greedy!")
         Move.new

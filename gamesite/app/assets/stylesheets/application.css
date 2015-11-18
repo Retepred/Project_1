@@ -32,7 +32,7 @@ body {
   size: 75%;
   top: 20%;
   left: 70%;
-  position: fixed;
+  position: absolute;
   -webkit-transform: rotate(-10deg);
   -moz-transform: rotate(-10deg);
   -o-transform: rotate(-10deg);
@@ -42,7 +42,7 @@ body {
 .xo2{
   top: 70%;
   left: 14%;
-  position: fixed;
+  position: absolute;
   -webkit-transform: rotate(30deg);
   -moz-transform: rotate(30deg);
   -o-transform: rotate(30deg);
@@ -52,7 +52,7 @@ body {
 .xo3{
   top: 40%;
   left: 80%;
-  position: fixed;
+  position: absolute;
   -webkit-transform: rotate(-60deg);
   -moz-transform: rotate(-60deg);
   -o-transform: rotate(-60deg);
@@ -96,8 +96,9 @@ a {
 }
 .game_list {
   width: 50%;
-  height: 100%;
+  height: 150px;
   padding-left: 550px;
+  overflow: scroll;
 }
 .game_names {
 /*  border: 1px dotted black;*/

@@ -17,7 +17,7 @@
         <%= column if column %>
         <div class="button<%=cell_number%>"
         <p>
-          <%if @game.board_squared[row_index][column_index] == nil%> 
+          <%if (@game.board_squared[row_index][column_index] == nil) && (@game.finished? == false)%> 
             <%= button_to 'Click me!', {action: :update, params: {square: cell_number}}, method: :patch, class: "TTTButton" %>
           <%end%>
         </p>
