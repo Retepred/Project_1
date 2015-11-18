@@ -95,7 +95,8 @@ a {
   color: black;
 }
 .game_list {
-  width: 50%;
+  position: relative;
+  width: 300px;
   height: 150px;
   padding-left: 550px;
   overflow: scroll;

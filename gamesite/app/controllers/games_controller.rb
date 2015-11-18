@@ -13,6 +13,10 @@ class GamesController < ApplicationController
         @game.make_move( @game.player2, @game.free_squares.sample )
       end
 
+      if !@game.finished?
+        # @moves.last.player.wins + 1
+      end
+
       flash[:alert] = @game.errors.messages[:player].first if @game.errors.messages[:player]
       redirect_to(game_path(@game)) and return
     end
@@ -46,7 +50,7 @@ class GamesController < ApplicationController
   # end
 
   def game_params
-    params.require(:game).permit(:game_name, :player1_id, :player2_id, :username)
+    params.require(:game).permit(:game_name, :player1_id, :player2_id, :username, :wins)
   end
 
 end

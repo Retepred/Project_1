@@ -68,7 +68,6 @@ class Game < ActiveRecord::Base
         "It is a draw!"
       when winning_game?
         "#{moves.last.player.username} won!"
-          # win_increase
       else
         "It's still in progress"
       end
