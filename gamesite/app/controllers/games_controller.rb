@@ -9,18 +9,22 @@ class GamesController < ApplicationController
     flash[:alert] = @game.errors.messages[:player].first if @game.errors.messages[:player]
     if @game.make_move(current_user, params[:square]).persisted?
       @game.reload
+
       if @game.ai_playing? && !@game.finished?
         @game.make_move( @game.player2, @game.free_squares.sample )
       end
 
-      if !@game.finished?
-        # @moves.last.player.wins + 1
-      end
+       if @game.finished?
+         @game.winning_player.wins += 1
+         @game.winning_player.save!
+       end
 
       flash[:alert] = @game.errors.messages[:player].first if @game.errors.messages[:player]
       redirect_to(game_path(@game)) and return
     end
-     redirect_to (game_path)
+
+    redirect_to (game_path)
+
   end
 
     def show
@@ -32,11 +36,10 @@ class GamesController < ApplicationController
 
     def create
       @game.player1 = current_user
-
       respond_to do |format|
         if @game.save
           flash[:notice] = "Game #{@game.game_name} was successfully created."
-          format.html { redirect_to(:action=>:index) }
+          format.html { redirect_to(action: "show", id:Game.last.id) }
           format.xml  { render :xml => @game, :status => :created, :location => @game }
         else
           format.html { render :action => "new" }
